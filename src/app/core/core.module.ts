@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { KeycloakService } from './services/keycloak.service';
-import { FooService } from './services/foo.service';
+import { WeatherForecastService } from './services/weather-forecast.service';
 import { MessageService } from './services/message.service';
 import { UserService } from './services/user.service';
 
@@ -14,7 +14,7 @@ import { UserService } from './services/user.service';
   ],
   providers: [
     KeycloakService,
-    FooService,
+    WeatherForecastService,
     MessageService,
     UserService
   ]

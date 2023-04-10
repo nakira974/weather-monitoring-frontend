@@ -5,7 +5,7 @@ import { KeycloakService } from '@core/services/keycloak.service';
 @Injectable({
   providedIn: 'root'
 })
-export class FooGuard implements CanActivate {
+export class ApiGuardian implements CanActivate {
 
   constructor(private keycloakService: KeycloakService, private router: Router) { }
 

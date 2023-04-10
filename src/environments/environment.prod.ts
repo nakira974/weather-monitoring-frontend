@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  foo_api: 'http://localhost:8080/foo/',
-  weather_api: 'http://localhost:8080/weather',
+  foo_api: 'http://localhost:8083/weather',
+  weather_api: 'http://localhost:8083/weather',
   authResourceServerConfig: {
     allowedUrls: [
       'http://localhost:8083/weather',

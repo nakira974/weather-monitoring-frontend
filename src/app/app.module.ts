@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
   declarations: [
     AppComponent,
     MenuComponent,
-    LayoutComponent
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,
