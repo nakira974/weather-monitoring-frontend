@@ -1,17 +1,17 @@
 export const environment = {
   production: true,
-  foo_api: 'http://localhost:8083/weather',
-  weather_api: 'http://localhost:8083/weather',
+  foo_api: 'https://monitor.lkh.coffee:8083/weather',
+  weather_api: 'https://monitor.lkh.coffee:8083/weather',
   authResourceServerConfig: {
     allowedUrls: [
-      'http://localhost:8083/weather',
+      'https://monitor.lkh.coffee:8083/weather',
     ],
     sendAccessToken: true
   },
   authConfig: {
-    issuer: 'http://localhost:8080/auth/realms/weathermonitoring',
+    issuer: 'https://monitor.lkh.coffee:8443/auth/realms/weathermonitoring',
     redirectUri: window.location.origin,
-    clientId: 'login-app',
+    clientId: 'clientapp-login',
     responseType: 'code',
     scope: 'openid profile email offline_access',
     showDebugInformation: true,
