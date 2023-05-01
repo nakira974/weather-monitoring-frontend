@@ -12,21 +12,17 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 import { environment } from 'src/environments/environment';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MenuComponent,
-    LayoutComponent,
-  ],
+  declarations: [AppComponent, MenuComponent, LayoutComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CoreModule,
     HttpClientModule,
     OAuthModule.forRoot({
-      resourceServer: environment.authResourceServerConfig
-    })
+      resourceServer: environment.authResourceServerConfig,
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

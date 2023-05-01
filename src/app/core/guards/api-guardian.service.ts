@@ -1,16 +1,25 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import {
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  Router,
+} from '@angular/router';
 import { KeycloakService } from '@core/services/keycloak.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiGuardian implements CanActivate {
+  constructor(
+    private keycloakService: KeycloakService,
+    private router: Router
+  ) {}
 
-  constructor(private keycloakService: KeycloakService, private router: Router) { }
-
-  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean {
     const requiredRoles = next.data['requiredRoles'];
     if (!this.keycloakService.getIsLogged()) {
       this.router.navigate(['/']);
@@ -23,5 +32,4 @@ export class ApiGuardian implements CanActivate {
     }
     return true;
   }
-
 }

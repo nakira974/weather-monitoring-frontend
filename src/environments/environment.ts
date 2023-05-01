@@ -11,7 +11,7 @@ export const environment = {
   authConfig: {
     issuer: 'https://monitor.lkh.coffee:8443/auth/realms/weathermonitoring',
     redirectUri: window.location.origin,
-    clientId: 'login-app',
+    clientId: 'clientapp-login',
     responseType: 'code',
     scope: 'openid profile email offline_access',
     showDebugInformation: true,

@@ -4,22 +4,22 @@ import { KeycloakService } from '@core/services/keycloak.service';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent implements OnInit {
   isLogged: boolean = false;
   isAdmin: boolean = false;
-  username: string = "";
+  username: string = '';
 
   /**
    * Inject services.
-   * 
+   *
    * Important: `LoginService` depends on `KeycloakService`.
-   * 
+   *
    * @param keycloakService is the service that takes care of setting up OAuth with Keycloack.
    * @param loginService is the service that handles the basic information of the authentication system.
    */
-  constructor(private keycloakService: KeycloakService) { }
+  constructor(private keycloakService: KeycloakService) {}
 
   ngOnInit(): void {
     this.keycloakService.afterTryLogin().subscribe(() => {
@@ -28,7 +28,7 @@ export class MenuComponent implements OnInit {
       this.username = this.keycloakService.getUsername();
     });
 
-    console.log("MenuComponent ngOnInit");
+    console.log('MenuComponent ngOnInit');
   }
 
   public login(): void {

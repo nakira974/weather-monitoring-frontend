@@ -15,21 +15,28 @@ const routes: Routes = [
       },
       {
         path: 'home',
-        loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+        loadChildren: () =>
+          import('./home/home.module').then((m) => m.HomeModule),
       },
       {
         path: 'weather',
-        loadChildren: () => import('./weather/weather.module').then(m => m.WeatherModule)
-      }
-    ]
+        loadChildren: () =>
+          import('./weather/weather.module').then((m) => m.WeatherModule),
+      },
+    ],
   },
 
-  { path: 'signup', loadChildren: () => import('./signup/signup.module').then(m => m.SignupModule), canActivate: [SignupGuard] },
-  { path: '**', redirectTo: '', pathMatch: 'full' }
+  {
+    path: 'signup',
+    loadChildren: () =>
+      import('./signup/signup.module').then((m) => m.SignupModule),
+    canActivate: [SignupGuard],
+  },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

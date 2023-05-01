@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
-import { AuthConfig, NullValidationHandler, OAuthService, OAuthSuccessEvent } from 'angular-oauth2-oidc';
+import {
+  AuthConfig,
+  NullValidationHandler,
+  OAuthService,
+  OAuthSuccessEvent,
+} from 'angular-oauth2-oidc';
 import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class KeycloakService {
   private afterTryLoginSubject: Subject<boolean> = new Subject();
@@ -12,7 +17,7 @@ export class KeycloakService {
 
   constructor(private oauthService: OAuthService) {
     this.configure();
-    console.log("KeycloakService");
+    console.log('KeycloakService');
   }
 
   /**
@@ -22,18 +27,19 @@ export class KeycloakService {
     this.oauthService.configure(this.authConfig);
     this.oauthService.tokenValidationHandler = new NullValidationHandler();
     this.oauthService.setupAutomaticSilentRefresh();
-    this.oauthService.loadDiscoveryDocument()
+    this.oauthService
+      .loadDiscoveryDocument()
       .then(() => this.oauthService.tryLogin())
       .then((data: boolean) => this.afterTryLoginSubject.next(data));
   }
 
   /**
    * Checks whether there are tokens in the hash fragment.
-   * 
+   *
    * Why was `Observable` chosen for this method? Often `Observable`
    * is preferred over `Promise` because it provides the features of
    * `Promise` and more.
-   * 
+   *
    * @returns {Observable} An `Observable` with result `true` if there are tokens.
    */
   afterTryLogin(): Observable<boolean> {
@@ -51,12 +57,15 @@ export class KeycloakService {
   }
 
   public getIsLogged(): boolean {
-    return (this.oauthService.hasValidIdToken() && this.oauthService.hasValidAccessToken());
+    return (
+      this.oauthService.hasValidIdToken() &&
+      this.oauthService.hasValidAccessToken()
+    );
   }
 
   public getUsername(): string {
     let claims: any = this.oauthService.getIdentityClaims();
-    if (!claims) return "";
+    if (!claims) return '';
 
     return claims['preferred_username']; // claims.preferred_username
   }

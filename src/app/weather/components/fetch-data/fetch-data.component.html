@@ -4,7 +4,11 @@
 
 <p *ngIf="!forecasts"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="forecasts">
+<table
+  class="table table-striped"
+  aria-labelledby="tableLabel"
+  *ngIf="forecasts"
+>
   <thead>
     <tr>
       <th>Date</th>
@@ -23,4 +27,4 @@
   </tbody>
 </table>
 
-<div style="width: 800px;"><canvas id="forecasts"></canvas></div>
+<div style="width: 800px"><canvas id="forecasts"></canvas></div>

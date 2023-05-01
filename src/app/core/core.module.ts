@@ -5,18 +5,14 @@ import { WeatherForecastService } from './services/weather-forecast.service';
 import { MessageService } from './services/message.service';
 import { UserService } from './services/user.service';
 
-
-
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   providers: [
     KeycloakService,
     WeatherForecastService,
     MessageService,
-    UserService
-  ]
+    UserService,
+  ],
 })
-export class CoreModule { }
+export class CoreModule {}
