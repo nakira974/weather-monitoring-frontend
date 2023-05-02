@@ -1,7 +1,0 @@
-{
-  "/api/*": {
-    "target": "https://monitor.lkh.coffee:8083",
-    "secure": true,
-    "logLevel": "debug"
-  }
-}

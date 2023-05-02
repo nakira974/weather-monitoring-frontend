@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Chart, Plugin } from 'chart.js/auto';
 import { WeatherForecast } from '@core/models/weatherforecast';
+import {WeatherForecastService} from "@core/services/weather-forecast.service";
 
 @Component({
   selector: 'app-fetch-data',
@@ -32,12 +33,10 @@ export class FetchDataComponent {
     },
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private forecastService : WeatherForecastService) {}
 
   getForecasts(countryCode: string, regionCode: string, cityName: string) {
-    const url = `http://localhost:4200/api/weather?country=${countryCode}&state=${regionCode}&city=${cityName}`;
-
-    this.http.get<WeatherForecast[]>(url).subscribe(
+    this.forecastService.list(countryCode, regionCode, cityName).subscribe(
       (result) => {
         this.forecasts = result;
         const weatherForecastChart = <HTMLCanvasElement>(

@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  weather_api: 'https://monitor.lkh.coffee:8083/weather',
+  weather_api: 'https://monitor.lkh.coffee:8083/',
   authResourceServerConfig: {
     allowedUrls: [
       'https://monitor.lkh.coffee:8083/weather',

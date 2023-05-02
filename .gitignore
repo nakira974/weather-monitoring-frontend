@@ -429,3 +429,6 @@ gradle-app.setting
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/angular,webstorm,windows,linux,macos,node,maven,gradle,java
+/certs/privkey.pem
+/certs/cert.pem
+/certs/
