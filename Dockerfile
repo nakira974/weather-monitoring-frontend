@@ -5,6 +5,8 @@ FROM node:latest
 # Set the working directory to /app
 WORKDIR /app
 
+CMD mkdir /app/certs
+
 # Define a volume to persist the SSL certificate and key files
 VOLUME /app/certs
 
