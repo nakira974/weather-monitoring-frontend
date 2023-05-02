@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Chart, Plugin } from 'chart.js/auto';
 import { WeatherForecast } from '@core/models/weatherforecast';
 import {WeatherForecastService} from "@core/services/weather-forecast.service";
+import { DateFormatPipe } from './date-format.pipe';
 
 @Component({
   selector: 'app-fetch-data',
@@ -13,6 +14,7 @@ export class FetchDataComponent {
   public regionCode: string = '';
   public cityName: string = '';
   public forecasts: WeatherForecast[] = [];
+  public dateFormatPipe = new DateFormatPipe();
 
   public chartAreaBorder: Plugin = {
     id: 'chartAreaBorder',
@@ -95,7 +97,7 @@ export class FetchDataComponent {
             },
           },
           data: {
-            labels: this.forecasts.map((row) => row.date),
+            labels: this.forecasts.map((row) => this.dateFormatPipe.transform(row.date)),
             datasets: [
               {
                 label: 'Évolution de la température',
@@ -108,4 +110,24 @@ export class FetchDataComponent {
       (error) => console.error(error)
     );
   }
+
+  public update(countryCode:string, regionCode:string, cityName:string): void {
+    this.forecastService.update(countryCode, regionCode, cityName).subscribe(
+      (result) => {
+        console.log('Weather forecast updated:', result);
+      },
+      (error) => console.error(error)
+    );
+  }
+
+  public delete(countryCode:string, regionCode:string, cityName:string): void {
+    this.forecastService.delete(countryCode, regionCode, cityName).subscribe(
+      (result) => {
+        console.log('Weather forecast deleted:', result);
+        this.forecasts = [];
+      },
+      (error) => console.error(error)
+    );
+  }
+  protected readonly Date = Date;
 }

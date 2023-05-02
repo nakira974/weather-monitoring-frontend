@@ -29,32 +29,16 @@ export class WeatherForecastService {
     );
   }
 
-  public detail(id: number): Observable<WeatherForecast> {
-    return this.httpClient.get<WeatherForecast>(
-      this.weatherMonitoringBaseUri + `detail/${id}`,
+  public update(countryCode:string, regionCode:string, cityName:string): Observable<WeatherForecast[]> {
+    return this.httpClient.patch<any>(
+      this.weatherMonitoringBaseUri + `weather?country=${countryCode}&state=${regionCode}&city=${cityName}`,
       this.httpOptions
     );
   }
 
-  public create(weather: WeatherForecast): Observable<any> {
-    return this.httpClient.post<any>(
-      this.weatherMonitoringBaseUri + 'create',
-      weather,
-      this.httpOptions
-    );
-  }
-
-  public update(id: number, weather: WeatherForecast): Observable<any> {
-    return this.httpClient.put<any>(
-      this.weatherMonitoringBaseUri + `update/${id}`,
-      weather,
-      this.httpOptions
-    );
-  }
-
-  public delete(id: number): Observable<any> {
+  public delete(countryCode:string, regionCode:string, cityName:string): Observable<any> {
     return this.httpClient.delete<any>(
-      this.weatherMonitoringBaseUri + `delete/${id}`,
+      this.weatherMonitoringBaseUri + `weather?country=${countryCode}&state=${regionCode}&city=${cityName}`,
       this.httpOptions
     );
   }
