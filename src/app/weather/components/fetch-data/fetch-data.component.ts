@@ -35,7 +35,7 @@ export class FetchDataComponent {
   constructor(private http: HttpClient) {}
 
   getForecasts(countryCode: string, regionCode: string, cityName: string) {
-    const url = `https://monitor.lkh.coffee:8083/weather?country=${countryCode}&state=${regionCode}&city=${cityName}`;
+    const url = `http://localhost:4200/api/weather?country=${countryCode}&state=${regionCode}&city=${cityName}`;
 
     this.http.get<WeatherForecast[]>(url).subscribe(
       (result) => {

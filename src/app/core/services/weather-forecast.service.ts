@@ -11,7 +11,7 @@ export class WeatherForecastService {
   weatherMonitoringBaseUri = environment.weather_api;
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }),
   };
 
   constructor(private httpClient: HttpClient) {
